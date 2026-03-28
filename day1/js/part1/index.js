@@ -1,6 +1,6 @@
 import fs from "node:fs";
 
-const input = fs.readFileSync("./input.txt", { encoding: "utf-8" });
+const input = fs.readFileSync("../input.txt", { encoding: "utf-8" });
 const lines = input
   .split("\n")
   .map((line) => line.trim())
@@ -26,11 +26,15 @@ for (let i = 0; i < lines.length; i++) {
     } else if (dial === 100) {
       dial = 0;
     }
+
+
   }
 
   if (dial === 0) {
     zeros++;
   }
+
+
 }
 
 console.log(zeros);

@@ -14,14 +14,14 @@ func check(e error) {
 }
 
 func main() {
-	var path string = "input.txt"
+	var path string = "../input.txt"
 	data, err := os.ReadFile(path)
 	check(err)
 
 	var text string = string(data)
 
-	//	zeros := 0
-	//	dial := 50
+	zeros := 0
+	dial := 50
 
 	var lines []string = strings.Split(strings.TrimSpace(text), "\n")
 
@@ -31,10 +31,25 @@ func main() {
 		turns, err := strconv.Atoi(turnsStr)
 		check(err)
 
-		for i := 0; i < int(turns); i++ {
+		for i := 0; i < turns; i++ {
+			if direction == "L" {
+				dial--
+			} else {
+				dial++
+			}
 
+			if dial == -1 {
+				dial = 99
+			} else if dial == 100 {
+				dial = 0
+			}
+
+			if dial == 0 {
+				zeros++
+			}
 		}
+
 	}
 
-	fmt.Println("hello")
+	fmt.Println(zeros)
 }
